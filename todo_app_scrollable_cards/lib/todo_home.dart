@@ -10,13 +10,27 @@ class TodoHome extends StatefulWidget{
 
 class TodoHomeState extends State<TodoHome> {
 
+  //colors for background
   var appColors = [Color.fromRGBO(231, 129, 109, 1.0),Color.fromRGBO(99, 138, 223, 1.0),Color.fromRGBO(111, 194, 173, 1.0)];
+
+  //mock data for cards
   var cardsList = [CardItemModel("Personal", Icons.account_circle, 9, 0.83),CardItemModel("Work", Icons.work, 12, 0.24),CardItemModel("Home", Icons.home, 7, 0.32)];
+
+  //card index
+  var cardIndex = 0;
+
+  ScrollController scrollController;
+  @override
+  void initState() {
+    super.initState();
+    scrollController = new ScrollController();
+
+  }
 
   @override
   Widget build(BuildContext context) {
 
-
+    //layout for profile section
    final  _profileSection = new Container(
      width: MediaQuery.of(context).size.width,
       child: Padding(
@@ -41,6 +55,7 @@ class TodoHomeState extends State<TodoHome> {
       ),
     );
 
+   // utility method for displaying icons in card
    getIcons(position) {
      return Padding(
        padding: const EdgeInsets.all(8.0),
@@ -54,6 +69,7 @@ class TodoHomeState extends State<TodoHome> {
      );
    }
 
+   //method to display content in card
    getCardBody(position){
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -81,6 +97,7 @@ class TodoHomeState extends State<TodoHome> {
    }
 
 
+   // main method to display cards in horizontal scroll
    _todoCards(){
      return Column(
        children: <Widget>[
@@ -89,7 +106,7 @@ class TodoHomeState extends State<TodoHome> {
            child: ListView.builder(
              physics: NeverScrollableScrollPhysics(),
                 itemCount: 3,
-               controller: ScrollController(),
+               controller: scrollController,
                scrollDirection: Axis.horizontal,
                itemBuilder: (context, position){
                   return GestureDetector(
@@ -111,6 +128,22 @@ class TodoHomeState extends State<TodoHome> {
                         ),
                       ),
                     ),
+                    onHorizontalDragEnd: (details){
+                      if(details.velocity.pixelsPerSecond.dx > 0){
+                        if(cardIndex>0)
+                          cardIndex--;
+                      }else{
+                        if(cardIndex<2)
+                          cardIndex++;
+                      }
+                      print(cardIndex);
+                      setState(() {
+                        scrollController.animateTo(
+                            cardIndex*256.0,
+                            duration: Duration(milliseconds: 500),
+                            curve: Curves.fastOutSlowIn,);
+                      });
+                    },
                   );
                   }
                ),
