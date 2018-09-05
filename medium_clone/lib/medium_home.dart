@@ -51,8 +51,24 @@ class _MediumHomeState extends State<MediumHome> {
       );
     }
 
-   final _metaCol = new Container();
+    _metaCol(NewsArticle newsArticle){
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(newsArticle.author, style: TextStyle(fontSize: 18.0),),
+              Text("${newsArticle.date} . ${newsArticle.readTime}",
+                style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black45),),
 
+            ],
+          ),
+          Icon(Icons.bookmark_border),
+
+        ],
+      );
+    }
 
 
 
@@ -77,14 +93,21 @@ class _MediumHomeState extends State<MediumHome> {
           itemBuilder: (context, position){
             //get articles from mock data one by one
             newsArticle = NewsHelper.getArticle(position);
-            return new Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _categoryCol(newsArticle),
-                  _titleCol(newsArticle),
-                  _metaCol,
-                ],
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(0.0,0.5,0.0,0.5),
+
+              child: new Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      _categoryCol(newsArticle),
+                      _titleCol(newsArticle),
+                      _metaCol(newsArticle),
+                    ],
+                  ),
+                ),
               ),
             );
 
