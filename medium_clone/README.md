@@ -5,6 +5,7 @@ Recreated the UI of Medium app with a little help from [here](https://blog.usejo
 ### Screenshots
 <img src= "https://github.com/PoojaB26/FlutterUIChallenges/blob/master/medium_clone/Screenshot_1536167543.png" width="200">
 <img src="https://github.com/PoojaB26/FlutterUIChallenges/blob/master/medium_clone/Screenshot_1536167840.png" width="200">
+
 ## Getting Started
 
 For help getting started with Flutter, view our online
