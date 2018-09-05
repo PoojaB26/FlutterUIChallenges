@@ -70,6 +70,81 @@ class _MediumHomeState extends State<MediumHome> {
       );
     }
 
+    final _profileSection = new Container(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(32.0,64.0,32.0,16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Icon(Icons.account_circle, size: 90.0,),
+              SizedBox(height: 8.0,),
+              Text("Pooja Bhaumik", style: TextStyle(fontSize: 20.0),),
+              SizedBox(height: 8.0,),
+              Text("See profile", style: TextStyle(color: Colors.black45),)
+            ],
+          ),
+        ),
+    );
+
+    final _menuItems = new Container(
+      color: Colors.black12,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(40.0,16.0,40.0,40.0),
+
+        child: ListView(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Home", style: TextStyle(fontSize: 18.0),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Home", style: TextStyle(fontSize: 18.0),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Audio", style: TextStyle(fontSize: 18.0),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Bookmarks", style: TextStyle(fontSize: 18.0),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Interests", style: TextStyle(fontSize: 18.0),),
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Become a member", style: TextStyle(fontSize: 18.0, color: Colors.teal),),
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("New Story", style: TextStyle(fontSize: 18.0),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Stats", style: TextStyle(fontSize: 18.0),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Drafts", style: TextStyle(fontSize: 18.0),),
+            ),
+          ],
+        ),
+      ),
+    );
+
+
+    final _drawerLayout = new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _profileSection,
+        Expanded(child: _menuItems),
+      ],
+    );
+
 
 
     return new Scaffold(
@@ -86,7 +161,9 @@ class _MediumHomeState extends State<MediumHome> {
               child: Icon(Icons.search, color: Colors.grey[500],))
         ],
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: _drawerLayout,
+      ),
       body: ListView.builder(
 
           itemCount: NewsHelper.articleCount, //count of all articles in mock data
