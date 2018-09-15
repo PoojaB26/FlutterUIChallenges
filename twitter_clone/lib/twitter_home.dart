@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'search_screen.dart';
+import 'notifications_screen.dart';
+import 'messages_screen.dart';
+import 'user_feed_screen.dart';
 
 class TwitterHome extends StatefulWidget{
   @override
@@ -11,6 +15,13 @@ class TwitterHome extends StatefulWidget{
 class TwitterHomeState extends State<TwitterHome> {
 
   var selectedPageIndex = 0;
+
+  var pages = [
+    UserFeedHome(),
+    SearchHome(),
+    NotificationsHome(),
+    MessagesHome()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +60,7 @@ class TwitterHomeState extends State<TwitterHome> {
         },
         currentIndex: selectedPageIndex,
       ),
-      body: Container(),
+      body: pages[selectedPageIndex],
     );
   }
 }
