@@ -1,6 +1,6 @@
 # Twitter App Light Theme Clone
 
-Buildinga Twitter clone with help from [here](https://medium.com/@dev.n/flutter-challenge-todo-app-concept-bd36107aa291) and modified the code into cleaner separate widgets. 
+Building a Twitter clone with help from [here](https://itnext.io/flutter-challenge-twitter-a1cb17f1e21b) and modified the code into cleaner separate widgets. 
 
 ### Screenshot 
 <img src="https://github.com/PoojaB26/FlutterUIChallenges/blob/master/twitter_clone/sc.png" width="250"> 
