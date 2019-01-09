@@ -1,0 +1,21 @@
+  name: fashion_app
+  version: 1.0.0+1
+  dependencies:
+    cupertino_icons: ^0.1.2
+    flutter:
+      sdk: flutter
+  description: "A new Flutter application."
+  dev_dependencies:
+    flutter_test:
+      sdk: flutter
+  environment:
+    sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  flutter:
+    fonts:
+      -
+        family: Montserrat
+        fonts:
+          -
+            asset: assets/fonts/Montserrat-Regular.ttf
+    uses-material-design: true
+
