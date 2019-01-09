@@ -1,10 +1,32 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
 
+  @override
+  HomePageState createState() {
+    return new HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+  TabController tabController;
   final imagePath = 'https://picsum.photos/200/300?image=';
+
   final loremIpsum = ' It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with deskt';
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    tabController = new TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    tabController.dispose();
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -120,6 +142,7 @@ class HomePage extends StatelessWidget {
     );
 
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
@@ -137,6 +160,20 @@ class HomePage extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Colors.black,
               fontSize: 20.0),
+        ),
+      ),
+      bottomNavigationBar: Material(
+        color: Colors.white,
+        child: TabBar(
+          controller: tabController,
+          indicatorColor: Colors.transparent,
+          tabs: <Widget>[
+            Tab(icon: Icon(Icons.airplanemode_active, color: Colors.black,),),
+            Tab(icon: Icon(Icons.image, color: Colors.black,),),
+            Tab(icon: Icon(Icons.directions_car, color: Colors.black,),),
+            Tab(icon: Icon(Icons.forward, color: Colors.black,),)
+
+          ],
         ),
       ),
       body: _homeBody,
